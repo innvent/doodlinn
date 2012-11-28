@@ -98,6 +98,8 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
+    shoulda-matchers (1.4.1)
+      activesupport (>= 3.0.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -129,6 +131,7 @@ DEPENDENCIES
   less-rails
   rails (= 3.2.9)
   rspec-rails
+  shoulda-matchers
   sqlite3
   therubyracer
   twitter-bootstrap-rails
