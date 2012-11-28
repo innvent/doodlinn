@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
-  attr_accessible :description, :end_date, :name, :start_date
+  attr_accessible :description, :end_date, :name, :start_date, :token
   has_many :votes
+  before_create :create_token
 
   def votes_per_date
     result = {}
@@ -12,5 +13,10 @@ class Event < ActiveRecord::Base
     end
 
     result
+  end
+
+  private
+  def create_token
+    self.token = SecureRandom.urlsafe_base64[0..10]
   end
 end

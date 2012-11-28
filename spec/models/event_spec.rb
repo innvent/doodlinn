@@ -24,4 +24,9 @@ describe Event do
       event.votes_per_date.should eq(expected_result)      
     end
   end
+
+  it "deve adicionar um token apos ser criado" do
+    event.save
+    event.token.should_not be_blank
+  end
 end
