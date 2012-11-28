@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Vote do
-  let(:vote){Vote.new}
+  let(:vote){ Vote.new }
 
   it "um voto deve pertencer a um evento" do
     should belong_to(:event)
@@ -19,5 +19,13 @@ describe Vote do
     dates = ["1", Date.today]
     vote.dates_array = dates
     vote.should_not be_valid
+  end
+
+  context "#voted_on?" do
+    it "deve retornar 'true' se a data existir no array de datas" do
+      vote.dates_array = [Date.today]
+      vote.voted_on?(Date.today).should be_true
+    end
+
   end
 end
