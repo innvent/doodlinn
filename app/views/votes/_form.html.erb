@@ -1,0 +1,23 @@
+<%= form_for [@event, @vote], :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :participant, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :participant, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <% (@event.start_date..@event.end_date).each do |d| %>
+    <div class='controls'>
+      <label class="checkbox">
+        <%= l(d, format: :long) %> <input type='checkbox' value='<%= d %>' name='dates[]'>
+      </label>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                token_path(@event), :class => 'btn' %>
+  </div>
+<% end %>

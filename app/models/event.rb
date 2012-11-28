@@ -15,6 +15,10 @@ class Event < ActiveRecord::Base
     result
   end
 
+  def to_param
+    self.token
+  end
+
   private
   def create_token
     self.token = SecureRandom.urlsafe_base64[0..10]
