@@ -1,12 +1,12 @@
 class VotesController < ApplicationController
+  before_filter :find_event, :check_event_is_opened
+  
   def new
-    @event = Event.find_by_token params[:event_id]
     # @vote = @event.votes.build
     @vote = Vote.new
   end
 
   def create
-    @event = Event.find_by_token params[:event_id]
     # @vote = Vote.new(:event =>@event)
     @vote = @event.votes.new(params[:vote])
     if params[:dates]
@@ -21,6 +21,18 @@ class VotesController < ApplicationController
     else
       flash[:error] = "Something went wrong!"
       render 'new'
+    end
+  end
+
+  private
+  def find_event
+    @event = Event.find_by_token params[:event_id]
+  end
+
+  def check_event_is_opened
+    if @event.is_closed?
+      flash[:error] = "This event is closed for voting!"
+      redirect_to event_path(@event)
     end
   end
 end
