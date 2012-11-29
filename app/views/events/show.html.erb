@@ -12,5 +12,9 @@
   <dd><%= @event.end_date %></dd>
   <br>
 
+  <% @event.votes_per_date.each do |date, nbr_votes| %>
+    <p><%= l(date, format: :long) %>: <%= nbr_votes %></p>
+
+  <% end %>
   <%= link_to 'Votar', new_event_vote_path(@event), class: 'btn btn-medium btn-primary' %>
 </dl>
