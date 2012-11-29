@@ -17,6 +17,10 @@ class Event < ActiveRecord::Base
   has_many :votes
   before_create :create_token
 
+  def participants
+    self.votes.map{|x| x.participant}
+  end
+
   def votes_per_date
     result = {}
     (start_date..end_date).each do |date|
