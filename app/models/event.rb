@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :text
+#  start_date  :date
+#  end_date    :date
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  token       :string(255)
+#
+
 class Event < ActiveRecord::Base
   attr_accessible :description, :end_date, :name, :start_date, :token
   has_many :votes
@@ -13,6 +27,12 @@ class Event < ActiveRecord::Base
     end
 
     result
+  end
+
+  def dates_with_most_votes
+    hash = votes_per_date
+    max_votes = hash.values.max
+    hash.select{ |k, v| v == max_votes and v != 0 }.keys
   end
 
   def to_param

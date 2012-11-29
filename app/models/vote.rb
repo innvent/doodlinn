@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: votes
+#
+#  id          :integer          not null, primary key
+#  participant :string(255)
+#  dates_array :binary
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  event_id    :integer
+#
+
 class Vote < ActiveRecord::Base
   attr_accessible :dates_array, :participant
   validate :dates_array_contains_only_date_objects

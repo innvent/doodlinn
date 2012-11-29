@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: votes
+#
+#  id          :integer          not null, primary key
+#  participant :string(255)
+#  dates_array :binary
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  event_id    :integer
+#
+
 require 'spec_helper'
 
 describe Vote do

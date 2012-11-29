@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-
   def new
     @event = Event.new
   end
@@ -20,6 +19,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_token params[:token]
+    @votes_presenter = VotesPresenter.new(@event)
   end
-
 end
