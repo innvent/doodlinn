@@ -34,7 +34,7 @@
 <% content_for :javascript do %>
   <script type="text/javascript">
     $(document).ready(function(){
-      $('.date').datepicker();
+      $('.date').datepicker({ dateFormat: "yy-mm-dd" });
     });
   </script>
 <% end %>

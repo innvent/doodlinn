@@ -35,6 +35,10 @@ class Event < ActiveRecord::Base
     hash.select{ |k, v| v == max_votes and v != 0 }.keys
   end
 
+  def is_a_most_voted_date?(date)
+    dates_with_most_votes.include?(date)
+  end
+
   def to_param
     self.token
   end
