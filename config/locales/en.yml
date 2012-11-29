@@ -7,9 +7,9 @@ en:
   date:
     formats:
       default: "%d/%m/%Y"
-      datetime: "%d/%m/%Y às %H:%M"
-      short: "%d de %B"
-      long: "%d de %B de %Y"
-      short: "%d de %B"
-      month: "%B de %Y"
+      datetime: "%d/%m/%Y at %H:%M"
+      short: "%d of %B"
+      long: "%d of %B of %Y"
+      short: "%d of %B"
+      month: "%B of %Y"
       month_only: "%B"
