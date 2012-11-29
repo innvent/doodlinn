@@ -21,4 +21,14 @@ class EventsController < ApplicationController
     @event = Event.find_by_token params[:token]
     @votes_presenter = VotesPresenter.new(@event)
   end
+
+  def index
+    @events = Event.order(:name)
+  end
+
+  def close_voting
+    @event = Event.find_by_token params[:event_id]
+    @event.close!
+    redirect_to events_path
+  end
 end

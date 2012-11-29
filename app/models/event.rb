@@ -43,6 +43,15 @@ class Event < ActiveRecord::Base
     self.token
   end
 
+  def close!
+    self.close_date = DateTime.now
+    self.save!
+  end
+
+  def is_closed?
+    self.close_date and self.close_date < DateTime.now
+  end
+
   private
   def create_token
     self.token = SecureRandom.urlsafe_base64[0..10]

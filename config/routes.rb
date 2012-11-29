@@ -1,7 +1,8 @@
 Doodlinn::Application.routes.draw do
   root to: "events#new"
 
-  resources :events, only: [:new, :create, :destroy] do
+  resources :events, only: [:new, :create, :destroy, :index] do
+    post 'close_voting'
     resources :votes, only: [:new, :create]
   end
 
