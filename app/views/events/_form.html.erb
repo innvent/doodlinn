@@ -14,13 +14,13 @@
   <div class="control-group">
     <%= f.label :start_date, :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :start_date, :class => 'date_select' %>
+      <%= f.text_field :start_date, :class => 'date_select date' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :end_date, :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :end_date, :class => 'date_select' %>
+      <%= f.text_field :end_date, :class => 'date_select date' %>
     </div>
   </div>
 
@@ -29,4 +29,12 @@
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 events_path, :class => 'btn' %>
   </div>
+<% end %>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.date').datepicker();
+    });
+  </script>
 <% end %>

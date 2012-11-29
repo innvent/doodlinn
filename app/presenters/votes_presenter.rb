@@ -7,7 +7,7 @@ class VotesPresenter
 
   def build_dates_by_participant_votes_table
     html_to_return = "<table class='table'>"
-    html_to_return << "<thead><tr><th>Participante</th>"
+    html_to_return << "<thead><tr><th>Participant</th>"
 
     dates = (@event.start_date..@event.end_date).to_a
     dates.each { |d| html_to_return << "<th style='text-align: center'>#{I18n.l(d, format: :short)}</th>" }

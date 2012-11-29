@@ -5,6 +5,7 @@ gem 'jquery-rails'
 gem 'sqlite3'
 gem 'twitter-bootstrap-rails'
 gem 'annotate'
+gem 'jquery-ui-bootstrap-rails'
 
 group :assets do
   gem 'therubyracer'
