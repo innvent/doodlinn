@@ -10,6 +10,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  token       :string(255)
+#  close_date  :datetime
 #
 
 require 'test_helper'
