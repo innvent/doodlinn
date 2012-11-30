@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 
   def destroy
     Event.find_by_token(params[:id]).destroy
-    redirect_to new_event_url
+    redirect_to events_path
   end
 
   def show
