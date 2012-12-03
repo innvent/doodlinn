@@ -16,7 +16,7 @@
   </thead>
   <tbody>
     <% @events.each do |event| %>
-      <tr class="<%= event.is_closed? ? "error" : "" %>">
+      <tr class="<%= event.is_closed? ? "error" : "" %>" id="event_<%= event.id %>">
         <td><%= event.name %></td>
         <td><%= event.description %></td>
         <td><%= event.start_date %></td>
@@ -25,13 +25,14 @@
         <% if event.is_closed? %>
           <td>Event will happen on <%= l(event.dates_with_most_votes.first, format: :short) %></td>
         <% else %>
-          <td><%= link_to "Close voting", event_close_voting_path(event), method: :post, :class => 'btn btn-mini' %></td>
+          <td><%= link_to "Close voting", event_close_voting_path(event), method: :post, remote: true, id: "close_event_" + event.id.to_s, :class => 'btn btn-mini' %></td>
         <% end %>
         <td>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       event_path(event),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      remote: true,
                       :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>

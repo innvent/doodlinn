@@ -32,6 +32,6 @@ class EventsController < ApplicationController
     @event.participants.each do |participant|
       EventNotification.notify_most_voted_date(participant, @event).deliver
     end
-    redirect_to events_path
+    #redirect_to events_path
   end
 end

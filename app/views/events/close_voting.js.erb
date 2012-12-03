@@ -1,0 +1,11 @@
+// colocar class "error" no tr
+// colocar data do evento no lugar do botão
+
+var eventId = "<%= @event.id.to_s %>";
+var trElement = "event_" + eventId;
+var trElementJqueryObj = $('#' + trElement);
+var closeEventElement = "a#close_event_" + eventId;
+var closeEventJqueryObj = $(closeEventElement);
+
+trElementJqueryObj.addClass('error');
+closeEventJqueryObj.text('Event will happen on <%= l(@event.dates_with_most_votes.first, format: :short) %>');
