@@ -19,7 +19,19 @@ class VotesController < ApplicationController
       flash[:notice] = "Voted!"
       redirect_to token_path(@event)
     else
-      flash[:error] = "Something went wrong!"
+      errors = @vote.errors.full_messages
+      errors.each do |error|
+        case error
+        when "Participant is invalid"
+          flash[:error] = "You must enter a valid email in the Participant field"
+        when "Participant can't be blank"
+          flash[:error] = "You must enter a valid email in the Participant field"
+        when "Participant has already been taken"
+          flash[:error] = "You can only vote once!"
+        else
+          flash[:error] = "Something went wrong!"
+        end
+      end
       render 'new'
     end
   end
