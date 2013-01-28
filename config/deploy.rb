@@ -3,6 +3,7 @@ set :default_stage, "staging"
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano'
 require 'capistrano-unicorn'
+require File.expand_path('../deploy/database', __FILE__)
 require File.expand_path('../deploy/nginx', __FILE__)
 
 set :application,           "doodlinn"
@@ -20,6 +21,9 @@ logger.level = Capistrano::Logger::INFO  # Log levels: IMPORTANT, INFO, DEBUG, T
 
 after "deploy:restart",         "unicorn:reload"    # app IS NOT preloaded
 after "deploy:restart",         "unicorn:restart"   # app preloaded
+before "deploy:restart",        "deploy:db:symlink"
+after "deploy:setup",           "deploy:db:setup"
+after "deploy:setup",           "deploy:db:create"
 after "deploy:setup",           "nginx:setup", "nginx:reload"
 
 namespace :deploy do
