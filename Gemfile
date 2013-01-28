@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.11'
 gem 'jquery-rails'
 gem 'sqlite3'
 gem 'twitter-bootstrap-rails'
