@@ -22,6 +22,7 @@ end
 
 group :staging, :production do
   gem 'unicorn'
+  gem 'pg', '>= 0.14.1'
 end
 
 group :development, :test do
