@@ -9,7 +9,7 @@ set :application,           "doodlinn"
 set :repository,            "git@github.com:innvent/doodlinn.git"
 set :ssh_options,           { :forward_agent => true }
 set :scm,                   :git
-set :branch,                "master"
+set :branch,                "cap"
 set :scm_verbose,           true
 set :deploy_via,            :remote_cache
 set :rails_env,             "production"
