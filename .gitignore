@@ -15,3 +15,4 @@
 /tmp
 email_setup.rb
 mailer_setup.rb
+mail_setup.rb
