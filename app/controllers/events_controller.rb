@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 
   def destroy
     Event.find_by_token(params[:id]).destroy
-    redirect_to events_path
+    redirect_to new_event_url
   end
 
   def show
@@ -32,6 +32,10 @@ class EventsController < ApplicationController
     @event.participants.each do |participant|
       EventNotification.notify_most_voted_date(participant, @event).deliver
     end
+<<<<<<< HEAD
     #redirect_to events_path
+=======
+    redirect_to events_path
+>>>>>>> master
   end
 end
